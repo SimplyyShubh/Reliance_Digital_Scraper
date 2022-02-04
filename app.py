@@ -53,6 +53,18 @@ def isOOS():
         OOS = False
     return OOS
 
+def checkStates():
+    pinCodes = [744101, 507130, 790001, 781001, 800001, 140119, 490001, 396193, 362520, 110001, 403001, 360001, 121001, 171001, 180001, 813208, 560001,
+                670001, 682551, 450001, 400001, 795001, 783123, 796001, 797001, 751001, 533464, 140001, 301001, 737101, 600001, 500001, 799001, 201001, 244712, 700001]
+    for pincode in pinCodes:
+        closeAlert()
+        driver.find_element(
+            By.XPATH, '//*[@id="RIL_PDPInputPincode"]').send_keys(str(pincode))
+        if not isOOS():
+            print("Product is Available on Pincode => ", pincode)
+        time.sleep(5)
+    return
+    
 def runEndlessly():
 
     while True:
@@ -65,4 +77,5 @@ def runEndlessly():
         print("Current Price=> " , price)
         time.sleep(2)
 
+checkStates()
 # runEndlessly()
